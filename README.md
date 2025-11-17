@@ -7,6 +7,7 @@ Automated end-to-end test suite for [SBG Funding](https://sbgfunding.com/) websi
 ## 🐛 Bugs Found
 
 ### Critical UI Issues
+[[Watch the video]](https://youtu.be/zaLI8K0mRYo) 
 
 1. **About Us Page - Apply Now Button Not Clickable**
    - **Location:** `/about-us/` page
@@ -22,6 +23,7 @@ Automated end-to-end test suite for [SBG Funding](https://sbgfunding.com/) websi
 
 **⚠️ Important Note:** These bugs were discovered using a viewport size of 1920x1080. If the development team is using Playwright's default viewport (1280x720) or smaller, they may not be reproducing these issues. The overlay blocking behavior appears to be viewport-dependent, which is why these bugs may have gone unnoticed. It's recommended to test at multiple viewport sizes, especially desktop resolutions (1920x1080 and above) where users typically browse.
 
+![Screenshot of a visible but not clickable element](assets/ScreenshotEdited.png)
 ---
 
 ## 📂 Project Structure
