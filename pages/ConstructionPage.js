@@ -1,10 +1,16 @@
 // @ts-check
-import { expect } from '@playwright/test';
-import { BasePage } from './BasePage.js';
+import { expect } from "@playwright/test";
+import { BasePage } from "./BasePage.js";
+import { generateTestUserData } from "../helpers/dataGenerator.js";
 
 export class ConstructionPage extends BasePage {
   constructor(page) {
     super(page);
+    this.url = "/industries/construction";
+  }
+
+  async navigate() {
+    await this.goto(this.url);
   }
 
   get firstNameInput() {
@@ -39,7 +45,7 @@ export class ConstructionPage extends BasePage {
     return this.page.getByLabel(/Credit Score/i).first();
   }
 
-  async fillForm(data) {
+  async fillForm(data = generateTestUserData()) {
     await this.firstNameInput.fill(data.firstName);
     await this.lastNameInput.fill(data.lastName);
     await this.businessNameInput.fill(data.businessName);
@@ -48,6 +54,7 @@ export class ConstructionPage extends BasePage {
     await this.phoneInput.fill(data.phone);
     await this.timeInBusinessSelect.selectOption(data.timeInBusiness);
     await this.creditScoreSelect.selectOption(data.creditScore);
+    return data;
   }
 
   async verifyFormFilled(data) {
@@ -56,4 +63,3 @@ export class ConstructionPage extends BasePage {
     await expect(this.emailInput).toHaveValue(data.email);
   }
 }
-

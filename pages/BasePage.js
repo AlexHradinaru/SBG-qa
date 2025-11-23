@@ -2,6 +2,7 @@
 export class BasePage {
   constructor(page) {
     this.page = page;
+    this.url = '/';
   }
 
   async goto(url) {
@@ -9,7 +10,12 @@ export class BasePage {
   }
 
   async scrollToBottom() {
-    await this.page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await this.page.keyboard.press('End');
+  }
+
+  async scrollToBottomAndWait() {
+    await this.page.keyboard.press('End');
+    await this.page.waitForTimeout(100);
   }
 
   async waitForTimeout(ms) {

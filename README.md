@@ -34,11 +34,15 @@ SBG-qa/
 │   ├── BasePage.js          # Common functionality and shared elements
 │   ├── HomePage.js          # Homepage-specific actions and elements
 │   ├── AboutUsPage.js       # About Us page functionality
-│   └── ConstructionPage.js # Construction page form handling
+│   ├── ConstructionPage.js # Construction page form handling
+│   └── DashboardPage.js    # Dashboard page functionality
+├── helpers/
+│   └── dataGenerator.js     # Test data generation using Faker.js
+├── fixtures/                # Playwright fixtures (for future use)
 ├── tests/
 │   └── example.spec.js     # Test suite
-├── playwright.config.js     # Playwright configuration
-└── package.json
+├── playwright.config.js     # Playwright configuration with baseURL
+└── package.json            # Dependencies and npm scripts
 ```
 
 ---
@@ -47,7 +51,8 @@ SBG-qa/
 
 - **Homepage Tests:** Page load, navigation menu, header buttons
 - **Navigation Tests:** Dropdown menus, footer links, page transitions
-- **Form Tests:** Construction page form filling and validation
+- **Form Tests:** Construction page form filling and validation with random test data
+- **Security Tests:** Dashboard access control verification
 - **Bug Tests:** Documented UI issues with overlay blocking interactions
 
 ---
@@ -103,18 +108,36 @@ The workflow:
 
 The project uses a simple POM structure for maintainability:
 
-- **BasePage:** Common methods (navigation, scrolling) and shared elements
+- **BasePage:** Common methods (navigation, scrolling) and shared elements. All page objects extend this base class.
 - **HomePage:** Homepage-specific elements and navigation methods
 - **AboutUsPage:** About Us page functionality
-- **ConstructionPage:** Form handling with reusable `fillForm()` method
+- **ConstructionPage:** Form handling with reusable `fillForm()` method that accepts test data
+- **DashboardPage:** Dashboard page functionality and access control
 
+### Key Features
+
+- **baseURL Configuration:** All page objects use relative URLs that automatically use the `baseURL` from `playwright.config.js`
+- **Test Data Generation:** Uses `@faker-js/faker` to generate random test data for forms
+- **Reusable Methods:** Common actions like `scrollToBottomAndWait()` are available in BasePage
+
+## 📊 Test Data Generation
+
+The project uses **Faker.js** for generating realistic test data:
+
+- **Location:** `helpers/dataGenerator.js`
+- **Features:**
+  - Random names, emails, phone numbers
+  - Business names and revenue amounts
+  - Dropdown option selection (Time in Business, Credit Score)
+- **Usage:** The `ConstructionPage.fillForm()` method automatically generates random data if none is provided
 ---
 
 ## 🛠️ Tech Stack
 
 - **Playwright** - End-to-end testing framework
 - **JavaScript** - Test implementation
-- **Page Object Model** - Test architecture pattern
+- **Page Object Model (POM)** - Test architecture pattern
+- **@faker-js/faker** - Test data generation library
 
 ---
 
@@ -123,4 +146,3 @@ The project uses a simple POM structure for maintainability:
 - Viewport size: 1920x1080 (configurable in `playwright.config.js`)
 - Tests include both positive test cases and bug documentation
 - All tests use async/await for better readability
-
