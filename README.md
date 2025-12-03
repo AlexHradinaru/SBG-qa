@@ -24,6 +24,25 @@ Automated end-to-end test suite for [SBG Funding](https://sbgfunding.com/) websi
 **⚠️ Important Note:** These bugs were discovered using a viewport size of 1920x1080. If the development team is using Playwright's default viewport (1280x720) or smaller, they may not be reproducing these issues. The overlay blocking behavior appears to be viewport-dependent, which is why these bugs may have gone unnoticed. It's recommended to test at multiple viewport sizes, especially desktop resolutions (1920x1080 and above) where users typically browse.
 
 ![Screenshot of a visible but not clickable element](assets/ScreenshotEdited.png)
+
+---
+
+### 🔒 Security Audit Findings
+
+**Security Assessment: 9 Security Considerations Identified**
+
+As part of the QA process, I conducted a comprehensive security assessment of the SBG Funding website. The audit identified **9 security considerations** that warrant attention, demonstrating proficiency in security testing, API security evaluation, and vulnerability assessment.
+
+- Content security review
+
+**Key Findings:**
+1. **API Security (High Priority)** - REST API endpoints exposed without authentication requirements, allowing access to site content and media files
+2. **Content Exposure (High Priority)** - Sensitive documents and media files accessible without proper access controls
+3. **Comment System (Medium-High Priority)** - Comment moderation system issues identified, with potential SEO implications
+4. **Information Disclosure (Medium Priority)** - Version information and internal metadata exposed
+5. **Access Control (Medium Priority)** - Admin endpoints accessible without rate limiting protections
+6. **Admin Portal Access (Medium Priority)** - Admin login portal and administrative endpoints accessible without proper rate limiting, creating potential brute force attack vectors
+
 ---
 
 ## 📂 Project Structure
@@ -52,7 +71,7 @@ SBG-qa/
 - **Homepage Tests:** Page load, navigation menu, header buttons
 - **Navigation Tests:** Dropdown menus, footer links, page transitions
 - **Form Tests:** Construction page form filling and validation with random test data
-- **Security Tests:** Dashboard access control verification
+- **Security Tests:** Dashboard access control verification, comprehensive security audit
 - **Bug Tests:** Documented UI issues with overlay blocking interactions
 
 ---
