@@ -33,8 +33,6 @@ Automated end-to-end test suite for [SBG Funding](https://sbgfunding.com/) websi
 
 As part of the QA process, I conducted a comprehensive security assessment of the SBG Funding website. The audit identified **9 security considerations** that warrant attention, demonstrating proficiency in security testing, API security evaluation, and vulnerability assessment.
 
-- Content security review
-
 **Key Findings:**
 1. **API Security (High Priority)** - REST API endpoints exposed without authentication requirements, allowing access to site content and media files
 2. **Content Exposure (High Priority)** - Sensitive documents and media files accessible without proper access controls
@@ -42,6 +40,8 @@ As part of the QA process, I conducted a comprehensive security assessment of th
 4. **Information Disclosure (Medium Priority)** - Version information and internal metadata exposed
 5. **Access Control (Medium Priority)** - Admin endpoints accessible without rate limiting protections
 6. **Admin Portal Access (Medium Priority)** - Admin login portal and administrative endpoints accessible without proper rate limiting, creating potential brute force attack vectors
+
+**Note:** For security reasons, specific endpoint details, URLs, and sensitive information have been omitted from this summary. A detailed security audit report with complete findings and recommendations is available separately.
 
 ---
 
